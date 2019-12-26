@@ -3,7 +3,11 @@ project(CppPractice)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(CppPractice main.cpp)
+include_directories("./util")
+
+file(GLOB SOURCE_FILES ./util/*.cpp)
+
+add_executable(CppPractice main.cpp acmicpc/ExhaustiveSearch/prob1476.cpp acmicpc/dfs/prob1260.cpp vector/adjacentList.cpp util/vectorUtil.cpp util/vectorUtil.h)
 
 add_executable(prob1000 acmicpc/basic/prob1000.cpp)
 add_executable(prob10951 acmicpc/basic/prob10951.cpp)
@@ -11,3 +15,6 @@ add_executable(prob11718 acmicpc/basic/prob11718.cpp)
 add_executable(prob11720 acmicpc/basic/prob11720.cpp)
 add_executable(practice_next_perm acmicpc/permutation/practice_next_perm.cpp)
 add_executable(prob10974 acmicpc/permutation/prob10974.cpp)
+add_executable(prob1476 acmicpc/ExhaustiveSearch/prob1476.cpp)
+add_executable(prob1260 acmicpc/dfs/prob1260.cpp)
+add_executable(adjacentList vector/adjacentList.cpp util/vectorUtil.cpp)
