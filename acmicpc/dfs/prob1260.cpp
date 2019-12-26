@@ -31,19 +31,48 @@ Example:
 #include <vector>
 #include <set>
 #include <stack>
+#include <queue>
 
 using namespace std;
 
 stack<int> s;
 set<int> visit;
+queue<int> q;
 
-void bfs() {
+/**
+ * BFS needs queue and visit set
+ *
+ * @param v
+ * @param start
+ */
+void bfs(vector<vector<int>>& v, int start) {
+    if (q.empty()) {
+        return;
+    }
 
+    // dequeue
+    q.pop();
+    cout << start << ' ';
 
+    // enqueue
+    vector<int> subList = v[start];
+    for (auto& elem : subList) {
+        if (visit.find(elem) == visit.end()) {
+            q.push(elem);
+            visit.insert(elem);
+        }
+    }
+
+    bfs(v, q.front());
 }
 
-/*
+
+/**
+ *
  * DFS needs adjacent list or adjacent matrix and visit set
+ *
+ * @param v
+ * @param start
  */
 void dfs(vector<vector<int>>& v, int start) {
     vector<int> subList = v[start];
@@ -86,7 +115,12 @@ int main() {
 
     s.push(S);
     dfs(list, S);
+    visit.clear();
+
+    cout << '\n';
+
+    q.push(S);
+    visit.insert(S);
+    bfs(list, S);
 }
-
-
 
