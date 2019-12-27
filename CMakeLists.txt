@@ -7,7 +7,7 @@ include_directories("./util")
 
 file(GLOB SOURCE_FILES ./util/*.cpp)
 
-add_executable(CppPractice main.cpp acmicpc/ExhaustiveSearch/prob1476.cpp acmicpc/dfs/prob1260.cpp vector/adjacentList.cpp util/vectorUtil.cpp util/vectorUtil.h acmicpc/dfs/prob1260-2.cpp)
+add_executable(CppPractice main.cpp acmicpc/ExhaustiveSearch/prob1476.cpp acmicpc/dfs/prob1260.cpp vector/adjacentList.cpp util/vectorUtil.cpp util/vectorUtil.h acmicpc/dfs/prob1260-2.cpp acmicpc/dfs/prob2667.cpp)
 
 add_executable(prob1000 acmicpc/basic/prob1000.cpp)
 add_executable(prob10951 acmicpc/basic/prob10951.cpp)
@@ -19,3 +19,4 @@ add_executable(prob1476 acmicpc/ExhaustiveSearch/prob1476.cpp)
 add_executable(prob1260 acmicpc/dfs/prob1260.cpp)
 add_executable(adjacentList vector/adjacentList.cpp util/vectorUtil.cpp)
 add_executable(prob1260-2 acmicpc/dfs/prob1260-2.cpp)
+add_executable(prob2667 acmicpc/dfs/prob2667.cpp)
