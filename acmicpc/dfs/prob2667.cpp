@@ -57,6 +57,7 @@ void find(vector<string> &map, vector<vector<bool>> &visit) {
     }
 }
 
+// 지도를 입력받을 때에는 vector<string>으로 받으면 편하다.
 int main() {
     int N;
     cin >> N;

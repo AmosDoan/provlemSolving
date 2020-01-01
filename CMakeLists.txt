@@ -21,3 +21,5 @@ add_executable(adjacentList vector/adjacentList.cpp util/vectorUtil.cpp acmicpc/
 add_executable(prob1260-2 acmicpc/dfs/prob1260-2.cpp)
 add_executable(prob2667 acmicpc/dfs/prob2667.cpp)
 add_executable(prob1517 acmicpc/sorting/prob1517.cpp)
+add_executable(prob1012 acmicpc/dfs/prob1012.cpp)
+add_executable(1-twoSum leetcode/1-twoSum.cpp)
