@@ -29,34 +29,25 @@ vector<vector<int>> map;
 set<pair<int, int>> visit;
 set<pair<int, int>> virus;
 
-int findArea(vector<vector<int>> &tempMap, int start_x, int start_y, int area) {
-    if (visit.find(make_pair(start_x, start_y)) != visit.end()) {
-        return area;
+void drawMap(vector<vector<int>> tempMap) {
+    for (int i = 0; i < H; i++) {
+        for (int j = 0; j < W; j++) {
+            cout << tempMap[i][j] << ' ';
+        }
+        cout << '\n';
     }
+}
 
-    visit.insert(make_pair(start_x, start_y));
-
-    if (tempMap[start_x][start_y] != 0) {
-        return area;
+int findArea(vector<vector<int>> &tempMap) {
+    int area = 0;
+    for (int i = 0; i < H; i++) {
+        for (int j = 0; j < W; j++){
+            if (tempMap[i][j] == 0) {
+                area++;
+            }
+        }
     }
-
-    if (start_x > 0 && visit.find(make_pair(start_x - 1, start_y)) == visit.end()) {
-        area = findArea(tempMap, start_x - 1, start_y, area);
-    }
-
-    if (start_x + 1 < H && visit.find(make_pair(start_x + 1, start_y)) == visit.end()) {
-        area = findArea(tempMap, start_x + 1, start_y, area);
-    }
-
-    if (start_y > 0 && visit.find(make_pair(start_x, start_y - 1)) == visit.end()) {
-        area = findArea(tempMap, start_x, start_y - 1, area);
-    }
-
-    if (start_y + 1 < W && visit.find(make_pair(start_x, start_y + 1)) == visit.end()) {
-        area = findArea(tempMap, start_x, start_y + 1, area);
-    }
-
-    return area + 1;
+    return area;
 }
 
 void growVirus(vector<vector<int>> &tempMap, int start_virus_x, int start_virus_y) {
@@ -64,72 +55,79 @@ void growVirus(vector<vector<int>> &tempMap, int start_virus_x, int start_virus_
         return;
     }
 
-    map[start_virus_x][start_virus_y] = 2;
+    tempMap[start_virus_x][start_virus_y] = 2;
 
-    if (start_virus_x > 0 && map[start_virus_x - 1][start_virus_y] != 2) {
+    if (start_virus_x > 0 && tempMap[start_virus_x - 1][start_virus_y] != 2) {
         growVirus(tempMap, start_virus_x - 1, start_virus_y);
     }
 
-    if (start_virus_x + 1 < H && map[start_virus_x + 1][start_virus_y] != 2) {
+    if (start_virus_x + 1 < H && tempMap[start_virus_x + 1][start_virus_y] != 2) {
         growVirus(tempMap, start_virus_x + 1, start_virus_y);
     }
 
-    if (start_virus_y > 0 && map[start_virus_x ][start_virus_y - 1] != 2) {
+    if (start_virus_y > 0 && tempMap[start_virus_x ][start_virus_y - 1] != 2) {
         growVirus(tempMap, start_virus_x, start_virus_y - 1);
     }
 
-    if (start_virus_y + 1 < W && map[start_virus_x ][start_virus_y + 1] != 2) {
+    if (start_virus_y + 1 < W && tempMap[start_virus_x ][start_virus_y + 1] != 2) {
         growVirus(tempMap, start_virus_x, start_virus_y + 1);
     }
 }
 
 int setupWall(int x, int y, int wall) {
-
-    if (map[x][y] != 0) {
-        return 0;
-    }
-
     map[x][y] = 1;
 
-    if (wall == 0) {
+    if (wall == 1) {
         vector<vector<int>> tempMap = map;
         for (auto v : virus) {
             growVirus(tempMap, v.first, v.second);
         }
-        //넓이 구하기
-        return findArea(tempMap, )
+        int result = findArea(tempMap);
+        map[x][y] = 0;
+        return result;
     }
+
+    int maxArea = 0;
 
     for (int i = 0; i < H; i++) {
         for (int j = 0; j < W; j++) {
-            setupWall(i, j, wall - 1);
-        }
-    }
-
-    map[x][y] = 0;
-
-}
-
-/*
-int find() {
-    int maxSafety = 0;
-    // 바이러스 확산하면서 벽설치??
-    for (int i = 0; i < H; i++) {
-        for (int j = 0; j < W; j++) {
-            // Virus 확산
-            growVirus(0, 0);
-            // 안전 영역 너비 구하기
-            int area = findArea(0, 0, 0);
-            if (area > maxSafety) {
-                maxSafety = area;
+            if (map[i][j] != 0) {
+                continue;
+            }
+            int area = setupWall(i, j, wall - 1);
+            if (area > maxArea) {
+                maxArea = area;
             }
         }
     }
 
-    return maxSafety;
+    map[x][y] = 0;
+    return maxArea;
 }
-*/
 
+int findMaxArea() {
+    int maxArea = 0;
+
+    for (int i = 0; i < H; i++) {
+        for (int j = 0; j < W; j++) {
+            if (map[i][j] != 0) {
+                continue;
+            }
+            int area = setupWall(i, j, 3);
+            if (area > maxArea) {
+                maxArea = area;
+            }
+        }
+    }
+
+    return maxArea;
+}
+
+/**
+ * Time Complexity : O(H * W * H * W * H * W)
+ * H와 W는 최대 8이므로 64^3 => 2 ^ 18 = 1024 X 128 이므로 돌려볼만함
+ * @return
+ */
 int main() {
     cin.tie(NULL);
     cout.tie(NULL);
@@ -151,19 +149,7 @@ int main() {
         map.push_back(v);
     }
 
-
-    for (auto v : virus) {
-        growVirus(map, v.first, v.second);
-    }
-
-    for (int i = 0; i < H; i++) {
-        for (int j = 0; j < W; j++) {
-            cout << map[i][j] << ' ';
-        }
-        cout << '\n';
-    }
-
-    //cout << find();
+    cout << findMaxArea();
 
     return 0;
 }
