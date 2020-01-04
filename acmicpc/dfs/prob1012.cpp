@@ -8,6 +8,8 @@
 using namespace std;
 
 // X, Y 좌표의 경우 Array의 행렬과 반대로 찍어야
+// X좌표가 일반적으로는 가로이지만, Array는 세로이므로
+// M : 가로길이 N : 세로길이
 void printMap(vector<vector<int>> &map, int M, int N) {
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < M; j++) {
@@ -58,6 +60,7 @@ int traverse(vector<vector<int>> &map, int X, int Y) {
     return number_of_group;
 }
 
+// M 가로 N 세로
 int main() {
     cin.tie(NULL);
     cout.tie(NULL);
