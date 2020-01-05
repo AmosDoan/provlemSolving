@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 /**
@@ -46,26 +47,78 @@ public:
             l2 = l2->next;
         }
 
-        return new ListNode(3);
+        if (l1 != nullptr) {
+            carry_over = processLeft(&ptr, l1, carry_over);
+        } else if (l2 != nullptr) {
+            carry_over = processLeft(&ptr, l2, carry_over);
+        }
+
+        if (carry_over) {
+            ListNode *node = new ListNode(1);
+            ptr->next = node;
+        }
+
+        return result->next;
+    }
+
+private:
+    bool processLeft(ListNode **ptr, ListNode *left, bool carry_over) {
+        (*ptr)->next = left;
+        while (left != nullptr) {
+            if (carry_over) {
+                left->val++;
+            }
+
+            if (left->val >= 10) {
+                left->val = left->val % 10;
+                carry_over = true;
+            } else {
+                carry_over = false;
+            }
+
+            (*ptr) = left;
+            left = left->next;
+        }
+
+        return carry_over;
     }
 };
 
-int main() {
-    ListNode *v1= new ListNode(2);
-    v1->next = new ListNode(4);
-    v1->next->next = new ListNode(3);
-
-    ListNode *v2= new ListNode(7);
-    v2->next = new ListNode(0);
-    v2->next->next = new ListNode(8);
-
-    Solution sol;
-    ListNode* result = sol.addTwoNumbers(v1, v2);
-
+void printResult(ListNode *result) {
     while(result != nullptr) {
         cout << result->val << ' ';
         result = result->next;
     }
+    cout << '\n';
+}
+
+ListNode* createTestCase(vector<int> numbers) {
+    ListNode *ptr = new ListNode(0);
+    ListNode *result = ptr;
+    for (auto number : numbers) {
+        ListNode *node = new ListNode(number);
+        ptr->next = node;
+        ptr = ptr->next;
+    }
+
+    return result->next;
+}
+
+int main() {
+    // Test Case 1.
+    ListNode *v1= createTestCase(vector<int>{2, 4, 3});
+    ListNode *v2= createTestCase(vector<int>{5, 6, 4});
+
+    Solution sol;
+    printResult(sol.addTwoNumbers(v1, v2));
+
+    v1= createTestCase(vector<int>{9, 7, 0, 8});
+    v2= createTestCase(vector<int>{1});
+    printResult(sol.addTwoNumbers(v1, v2));
+
+    v1= createTestCase(vector<int>{9, 9});
+    v2= createTestCase(vector<int>{1});
+    printResult(sol.addTwoNumbers(v1, v2));
 
     return 0;
 }
