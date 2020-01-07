@@ -41,7 +41,7 @@ int find() {
 // scanf("%d %d\n") 하면 무한루프..
 int main() {
 
-    scanf("%d %d\n", &N, &M);
+    scanf("%d %d", &N, &M);
 
     edge.resize(N + 1, vector<int>());
 
@@ -49,6 +49,8 @@ int main() {
         int start, end;
         scanf("%d %d", &start, &end);
         edge[start].push_back(end);
+        // 무방향 그래프일 경우 반드시 인접리스트에 반대의 경우도 넣어주어야!
+        edge[end].push_back(start);
     }
 
     /*
