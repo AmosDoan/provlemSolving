@@ -10,6 +10,7 @@ using namespace std;
 int k;
 vector<int> S;
 
+// DFS with Backtracking
 void dfs(int number, int order, vector<int> result, int index) {
     result[order] = number;
     if (order == 5) {
