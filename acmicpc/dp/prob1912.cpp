@@ -3,7 +3,6 @@
 //
 #include <cstdio>
 #include <vector>
-#include <set>
 
 using namespace std;
 
@@ -12,26 +11,26 @@ vector<int> memoization;
 vector<int> number_list;
 
 int solve() {
-    int max_number = number_list[0];
-    bool first = true;
+    int prior_sum = 0;
+    int memo = 0;
 
     for (int i = 0; i < N; i++) {
         int current = number_list[i];
-        if (current == 0) {
-            continue;
+        memo = current + prior_sum;
+        memoization.push_back(memo);
+        if (memo < 0) {
+            prior_sum = 0;
+        } else if (memo > current) {
+            prior_sum = memo;
+        } else {
+            prior_sum = current;
         }
+    }
 
-        for (int j = 0; j < i + 1; j++) {
-            if (!first && memoization[j] < 0) {
-                continue;
-            } else {
-                first = false;
-            }
-            memoization[j] += current;
-
-            if (current > 0 && memoization[j] > max_number) {
-                max_number = memoization[j];
-            }
+    int max_number = memoization[0];
+    for (auto it : memoization) {
+        if (it > max_number) {
+            max_number = it;
         }
     }
 
@@ -40,8 +39,6 @@ int solve() {
 
 int main() {
     scanf("%d", &N);
-
-    memoization.resize(N, 0);
 
     for (int i = 0; i < N; i++) {
         int number;
