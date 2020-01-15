@@ -37,3 +37,4 @@ add_executable(3-longestSubstring leetcode/3-longestSubstring.cpp)
 add_executable(prob2583 acmicpc/dfs/prob2583.cpp)
 
 add_executable(prob7576 acmicpc/bfs/prob7576.cpp)
+add_executable(prob1697 acmicpc/bfs/prob1697.cpp)
