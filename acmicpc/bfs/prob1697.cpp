@@ -6,6 +6,9 @@
 #include <queue>
 #include <set>
 
+// 숫자의 범위를 잘보자..
+#define MAX_NUM 100001
+
 using namespace std;
 
 int start;
@@ -21,35 +24,23 @@ int solve() {
         int time = q.front().second;
         q.pop();
 
-        visit.insert(current);
-
         if (current == target) {
             return time;
         }
 
-        int candidate[4];
-        candidate[0] = current + 1;
-        candidate[1] = current - 1;
-        candidate[2] = 2 * current;
-        candidate[3] = 2 * (current - 1);
-
-        int min = 200000;
-        int min_idx = 0;
-        for (int i = 0; i < 4; i++) {
-            int difference = target - candidate[i];
-            if (difference < min) {
-                min = difference;
-                min_idx = i;
-            }
+        if (current + 1 < MAX_NUM && visit.find(current + 1) == visit.end()) {
+            visit.insert(current + 1);
+            q.push({current + 1, time + 1});
         }
 
-        int next_time = time + 1;
-        if (min_idx == 3) {
-            next_time++;
+        if (current - 1 >= 0 && visit.find(current - 1) == visit.end()) {
+            visit.insert(current - 1);
+            q.push({current - 1, time + 1});
         }
 
-        if (visit.find(candidate[min_idx]) == visit.end()) {
-            q.push({candidate[min_idx], next_time});
+        if (2 * current < MAX_NUM && visit.find(2 * current) == visit.end()) {
+            visit.insert(2 * current);
+            q.push({current * 2, time + 1});
         }
     }
 
