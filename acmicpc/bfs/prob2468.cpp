@@ -14,78 +14,75 @@ vector<vector<int>> map;
 set<pair<int, int>> visit;
 queue<pair<int, int>> q;
 
-int bfs(vector<vector<int>>& temp_map, int rain) {
-
+void bfs(vector<vector<int>>& temp_map) {
 
     while(!q.empty()) {
         int start_row = q.front().first;
         int start_col = q.front().second;
         q.pop();
 
-        visit.insert({start_row, start_col});
-
-        if (temp_map[start_row][start_col] <= rain) {
-            temp_map[start_row][start_col] = 1000;
-        }
-
+        // visit 체크는 넣기 전에 해야 메모리 초과를 막을 수 잇음 (Stack overflow를 막자)
         if (start_row + 1 < N && visit.find({start_row + 1, start_col}) == visit.end() &&
-            temp_map[start_row][start_col] != 1000) {
+            temp_map[start_row + 1][start_col] != 1000) {
+            visit.insert({start_row + 1, start_col});
             q.push({start_row + 1, start_col});
         }
 
         if (start_row - 1 >= 0 && visit.find({start_row - 1, start_col}) == visit.end() &&
-            temp_map[start_row][start_col] != 1000) {
+            temp_map[start_row - 1][start_col] != 1000) {
+            visit.insert({start_row - 1, start_col});
             q.push({start_row - 1, start_col});
         }
 
         if (start_col + 1 < N && visit.find({start_row, start_col + 1}) == visit.end() &&
-            temp_map[start_row][start_col] != 1000) {
+            temp_map[start_row][start_col + 1] != 1000) {
+            visit.insert({start_row, start_col + 1});
             q.push({start_row, start_col + 1});
         }
 
         if (start_col - 1 >= 0 && visit.find({start_row, start_col - 1}) == visit.end() &&
-            temp_map[start_row][start_col] != 1000) {
+            temp_map[start_row][start_col - 1] != 1000) {
+            visit.insert({start_row, start_col - 1});
             q.push({start_row, start_col - 1});
         }
     }
-
-    int count = 0;
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            cout << temp_map[i][j] << ' ';
-            if (temp_map[i][j] == 1000) {
-                count++;
-            }
-        }
-        cout << '\n';
-    }
-    cout << '\n';
-
-    return count;
 }
 
 int solve() {
-    int max_number = -1;
-    /*
-    for (int i = 2; i < 101; i++) {
+    int max_number = 0;
+    for (int rain = 1; rain < max_height; rain++) {
+        vector<vector<int>> temp_map = map;
 
-    }
-    */
-
-    int count = 0;
-    vector<vector<int>> temp_map = map;
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            if (visit.find({i, j}) == visit.end()) {
-                count++;
-                q.push({i, j});
-                bfs(temp_map, 4);
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                if (temp_map[i][j] <= rain) {
+                    temp_map[i][j] = 1000;
+                }
             }
         }
-    }
-    return count;
 
-    //return max_number;
+        int count = 0;
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                if (visit.find({i, j}) == visit.end() &&
+                    temp_map[i][j] != 1000) {
+                    count++;
+                    visit.insert({i, j});
+                    q.push({i, j});
+                    bfs(temp_map);
+                }
+            }
+        }
+
+        if (max_number < count) {
+            max_number = count;
+        }
+
+        visit.clear();
+        temp_map.clear();
+    }
+
+    return max_number;
 }
 
 int main() {
@@ -104,16 +101,7 @@ int main() {
         map.push_back(v);
     }
 
-    //cout << max_height;
     cout << solve();
-    /*
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            cout << map[i][j] << ' ';
-        }
-        cout << '\n';
-    }
-    */
 
     return 0;
 }
