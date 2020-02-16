@@ -4,16 +4,16 @@
 #include <iostream>
 #include <vector>
 #include <queue>
-#include <set>
 
 using namespace std;
+
+// 회고 set을 visit으로 사용하면 시간 초과남
 
 // N : 세로, Row
 // M : 가로, Col
 // H : 높이, Height
 int N, M, H;
 vector<vector<vector<int>>> map;
-set<pair<int, pair<int, int>>> visit;
 queue<pair<pair<int, pair<int, int>>, int>> q;
 
 int dx[6] = {0, 0, 1, -1, 0, 0};
@@ -41,13 +41,9 @@ int bfs() {
             int next_h = current_h + dz[i];
 
             if (isValidRange(next_row, N) && isValidRange(next_col, M) &&
-                isValidRange(next_h, H)) {
-                if (visit.find({next_h, {next_row, next_col}}) == visit.end() &&
-                    map[next_h][next_row][next_col] == 0) {
-                    map[next_h][next_row][next_col] = 1;
-                    visit.insert({next_h, {next_row, next_col}});
-                    q.push({{next_h, {next_row, next_col}}, current_level + 1});
-                }
+                isValidRange(next_h, H) && map[next_h][next_row][next_col] == 0) {
+                map[next_h][next_row][next_col] = 1;
+                q.push({{next_h, {next_row, next_col}}, current_level + 1});
             }
         }
     }
@@ -78,7 +74,6 @@ int main() {
                 map[i][j][k] = element;
                 if (element == 1) {
                     q.push({{i, {j, k}}, 0});
-                    visit.insert({i, {j, k}});
                 }
             }
         }
