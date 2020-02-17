@@ -11,30 +11,6 @@ using namespace std;
 class Solution {
 private:
     vector<vector<bool>> dp;
-    int max_length = 0;
-    pair<int, int> max_palindrome;
-
-    bool solve(string &s, int i, int j) {
-        if (j == i) {
-            dp[i][j] = true;
-            return true;
-        }
-
-        if (j == i + 1) {
-            dp[i][j] = s[i] == s[j];
-        } else {
-            dp[i][j] = s[i] == s[j] && solve(s, i + 1, j -1);
-        }
-
-        if (dp[i][j]) {
-            if (j - 1 > max_length) {
-                max_length = j - i;
-                max_palindrome = {i, j};
-            }
-            return true;
-        }
-        return false;
-    }
 
 public:
     string longestPalindrome(string s) {
@@ -45,7 +21,22 @@ public:
             dp[i][i] = true;
         }
 
-        solve(s, 0, s.size() - 1);
+        int max_length = 0;
+        pair<int, int> max_palindrome;
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (j == i + 1) {
+                    dp[i][j] = s[i] == s[j];
+                } else {
+                    dp[i][j] = s[i] == s[j] && dp[i + 1][j - 1];
+                }
+
+                if (dp[i][j] && j - i > max_length) {
+                    max_length = j - i;
+                    max_palindrome = {i, j};
+                }
+            }
+        }
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -58,32 +49,17 @@ public:
 
         int start = max_palindrome.first;
         int end = max_palindrome.second;
-        cout << "DEBUG :: " << start << ", " << end << '\n';
         return s.substr(start, end - start + 1);
     }
 };
 
 int main() {
-    Solution *s;
+    Solution s;
     /*
-    s = new Solution();
-    cout << s->longestPalindrome("aa") << '\n';
-    delete s;
+    cout << s.longestPalindrome("aa") << '\n';
+    cout << s.longestPalindrome("babad") << '\n';
+    cout << s.longestPalindrome("cbbd") << '\n';
     */
-
-    s = new Solution();
-    cout << s->longestPalindrome("babad") << '\n';
-    delete s;
-
-    /*
-    s = new Solution();
-    cout << s->longestPalindrome("cbbd") << '\n';
-    delete s;
-
-    s = new Solution();
-    cout << s->longestPalindrome("aaaa") << '\n';
-    delete s;
-    */
-
+    cout << s.longestPalindrome("aaaa") << '\n';
     return 0;
 }
