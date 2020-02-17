@@ -23,27 +23,32 @@ public:
 
         int max_length = 0;
         pair<int, int> max_palindrome;
-        for (int i = 0; i < n; i++) {
-            for (int j = i + 1; j < n; j++) {
-                if (j == i + 1) {
-                    dp[i][j] = s[i] == s[j];
+        for (int i = 1; i < n; i++) {
+            for (int j = 0; j < n - i; j++) {
+                int start = j;
+                int end = j + i;
+
+                if (i == 1) {
+                    dp[start][end] = s[start] == s[end];
                 } else {
-                    dp[i][j] = s[i] == s[j] && dp[i + 1][j - 1];
+                    dp[start][end] = s[start] == s[end] && dp[start + 1][end - 1];
                 }
 
-                if (dp[i][j] && j - i > max_length) {
-                    max_length = j - i;
-                    max_palindrome = {i, j};
+                if (dp[start][end] && end - start > max_length) {
+                    max_length = end - start;
+                    max_palindrome = {start, end};
                 }
             }
         }
 
+        /*
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 cout << dp[i][j] << ' ';
             }
             cout << '\n';
         }
+        */
 
         dp.clear();
 
@@ -54,12 +59,20 @@ public:
 };
 
 int main() {
-    Solution s;
-    /*
-    cout << s.longestPalindrome("aa") << '\n';
-    cout << s.longestPalindrome("babad") << '\n';
-    cout << s.longestPalindrome("cbbd") << '\n';
-    */
-    cout << s.longestPalindrome("aaaa") << '\n';
+    Solution *s;
+    s = new Solution();
+    cout << s->longestPalindrome("aa") << '\n';
+    delete s;
+
+    s = new Solution();
+    cout << s->longestPalindrome("babad") << '\n';
+    delete s;
+
+    s = new Solution();
+    cout << s->longestPalindrome("cbbd") << '\n';
+    delete s;
+
+    s = new Solution();
+    cout << s->longestPalindrome("aaaa") << '\n';
     return 0;
 }
