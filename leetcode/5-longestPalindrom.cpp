@@ -1,7 +1,12 @@
 //
 // Created by Amos on 2020/02/14.
 //
+#include <iostream>
+#include <vector>
+#include <string>
+#include <map>
 
+using namespace std;
 
 class Solution {
 private:
@@ -56,3 +61,10 @@ public:
         }
     }
 };
+
+int main() {
+    Solution s;
+    cout << s.longestPalindrome("aa") << '\n';
+    cout << s.longestPalindrome("babad") << '\n';
+    cout << s.longestPalindrome("cbbd") << '\n';
+}
