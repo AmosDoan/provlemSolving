@@ -54,6 +54,8 @@ int solve(int row, int col, int distance, set<char> memo) {
         }
     }
 
+    // For Back tracking
+    visit.erase({row, col});
     memo.erase(map[row][col]);
 
     return max_distance;
