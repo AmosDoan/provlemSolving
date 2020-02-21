@@ -57,3 +57,4 @@ add_executable(prob10950 acmicpc/io/prob10950.cpp)
 add_executable(prob2293 acmicpc/dp/prob2293.cpp)
 
 add_executable(prob2293_memory_fail acmicpc/dp/prob2293_memory_fail.cpp)
+add_executable(prob1987 acmicpc/dfs/prob1987.cpp)
