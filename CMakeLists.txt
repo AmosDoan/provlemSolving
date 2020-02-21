@@ -55,3 +55,5 @@ add_executable(7-reverseInteger leetcode/7-reverseInteger.cpp)
 add_executable(9-palindromeNumber leetcode/9-palindromeNumber.cpp)
 add_executable(prob10950 acmicpc/io/prob10950.cpp)
 add_executable(prob2293 acmicpc/dp/prob2293.cpp)
+
+add_executable(prob2293_memory_fail acmicpc/dp/prob2293_memory_fail.cpp)
