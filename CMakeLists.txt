@@ -61,3 +61,4 @@ add_executable(prob1987 acmicpc/dfs/prob1987.cpp)
 add_executable(prob10809 acmicpc/string/prob10809.cpp)
 
 add_executable(prob11723 acmicpc/basic/prob11723.cpp)
+add_executable(basic_io cpp-practice/io/basic_io.cpp)
