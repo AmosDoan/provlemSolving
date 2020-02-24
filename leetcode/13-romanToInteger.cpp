@@ -46,7 +46,6 @@ int main() {
     cout << s->romanToInt("III") << '\n';
     delete s;
 
-
     s = new Solution();
     cout << s->romanToInt("IV") << '\n';
     delete s;
