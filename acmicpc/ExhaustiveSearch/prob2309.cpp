@@ -3,37 +3,54 @@
 //
 
 #include <iostream>
+#include <algorithm>
 #include <vector>
 
 using namespace std;
 
 vector<int> sample;
 
-bool solve(int start, int count, vector<int> &collect) {
-    if (count == 7) {
-        int sum = 0;
-        for (auto &e : collect) {
-            sum += e;
+int sum_vector(int c1, int c2) {
+    int sum = 0;
+    for (int i = 0; i < 9; i++) {
+        if (i == c1 || i == c2) {
+            continue;
         }
-        return sum == 100;
+        sum += sample[i];
     }
+    return sum;
+}
 
-    for (int i = start; i++; i < 7) {
-        if(solve(i + 1, count + 1, collect)) {
-            return true;
+void solve() {
+    for (int i = 0; i < 9; i++) {
+        for (int j = i + 1; j < 9; j++) {
+            int result = sum_vector(i, j);
+
+            if (result == 100) {
+                sample[i] = sample[j] = 0;
+                return;
+            }
         }
     }
 }
 
 int main() {
 
-    for (int i = 0; i < 7; i++) {
+    for (int i = 0; i < 9; i++) {
         int n = 0;
         cin >> n;
         sample.push_back(n);
     }
 
-    //cout << solve() << '\n';
+    solve();
+
+    sort(sample.begin(), sample.end());
+    for (auto &e : sample) {
+        if (e == 0) {
+            continue;
+        }
+        cout << e << '\n';
+    }
 
     return 0;
 }
