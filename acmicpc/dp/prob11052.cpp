@@ -18,9 +18,10 @@ int solve() {
 
             if (i <= j) {
                 int number_of_current = j / i;
-                int when_current_using = number_of_current * p[i - 1] + dp[i - 1][j - number_of_current * i];
-
-                dp[i][j] = max(dp[i][j], when_current_using);
+                for (int k = number_of_current; k > 0; k--) {
+                    int when_current_using = k * p[i - 1] + dp[i - 1][j - k * i];
+                    dp[i][j] = max(dp[i][j], when_current_using);
+                }
             }
         }
     }
