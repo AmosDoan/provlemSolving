@@ -1,0 +1,16 @@
+//
+// Created by Amos on 2020/02/29.
+//
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    string s;
+    while(getline(cin , s)) {
+        cout << s << '\n';
+    }
+
+    return 0;
+}
+
