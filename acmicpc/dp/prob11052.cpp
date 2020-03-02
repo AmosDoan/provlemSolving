@@ -21,7 +21,7 @@ int solve() {
 
     for (int i = 1; i <= N; i++) {
         for (int j = 1; j <= i; j++) {
-            d[i] = max(d[i], d,[i - j] + a[j]);
+            d[i] = max(d[i], d[i - j] + a[j]);
         }
     }
 }
