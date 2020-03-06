@@ -96,3 +96,6 @@ add_executable(prob10992 acmicpc/basic/prob10992.cpp)
 add_executable(14-longestCommonPrefix leetcode/14-longestCommonPrefix.cpp)
 add_executable(prob2644 acmicpc/bfs/prob2644.cpp)
 add_executable(20-validParentheses leetcode/20-validParentheses.cpp)
+add_executable(chain-of-responsibility design-pattern/chain-of-responsibility/chain-of-responsibility.cpp design-pattern/chain-of-responsibility/HelpHandler.cpp
+        design-pattern/chain-of-responsibility/Widget.cpp design-pattern/chain-of-responsibility/Button.cpp design-pattern/chain-of-responsibility/Dialog.cpp
+        design-pattern/chain-of-responsibility/Application.cpp)
