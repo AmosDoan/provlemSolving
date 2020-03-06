@@ -22,7 +22,6 @@ add_executable(prob1260-2 acmicpc/dfs/prob1260-2.cpp)
 add_executable(prob2667 acmicpc/dfs/prob2667.cpp)
 add_executable(prob1517 acmicpc/sorting/prob1517.cpp)
 add_executable(prob1012 acmicpc/dfs/prob1012.cpp)
-add_executable(1-twoSum leetcode/1-twoSum.cpp leetcode/2-addTwoNumbers.cpp leetcode/3-longestSubstring.cpp leetcode/9-palindromeNumber.cpp acmicpc/io/prob10950.cpp)
 add_executable(prob11403 acmicpc/dfs/prob11403.cpp)
 add_executable(prob14502 acmicpc/dfs/prob14502.cpp)
 add_executable(prob1197 acmicpc/mst/mst/prob1197.cpp)
@@ -99,3 +98,4 @@ add_executable(20-validParentheses leetcode/20-validParentheses.cpp)
 add_executable(chain-of-responsibility design-pattern/chain-of-responsibility/chain-of-responsibility.cpp design-pattern/chain-of-responsibility/HelpHandler.cpp
         design-pattern/chain-of-responsibility/Widget.cpp design-pattern/chain-of-responsibility/Button.cpp design-pattern/chain-of-responsibility/Dialog.cpp
         design-pattern/chain-of-responsibility/Application.cpp)
+add_executable(11-ContainerWithMostWaterBruteForce leetcode/11-ContainerWithMostWaterBruteForce.cpp)
