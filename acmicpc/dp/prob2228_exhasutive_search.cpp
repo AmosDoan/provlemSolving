@@ -20,10 +20,8 @@ int solve(int idx, int current_group) {
         int sum = 0;
         for (int i = 0; i < M; i++) {
             for (auto elem : group[i]) {
-                cout << elem << " ";
                 sum += elem;
             }
-            cout << '\n';
         }
         return sum;
     }
