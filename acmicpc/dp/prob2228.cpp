@@ -4,58 +4,69 @@
 #include <iostream>
 #include <vector>
 
+#define MIN -3276801
+
 using namespace std;
 
 int N, M;
 vector<int> numbers;
-vector<vector<int>> group;
+vector<vector<int>> dp;
 
-int solve(int idx, int current_group) {
-    // Base Case
-    if (idx > N && current_group != M) {
+// current_idx 까지의 숫자를 고려하여 current_idx 수를 nr_group개의 구간으로 나눌 때
+// 얻을 수 있는 최대 합
+int solve(int nr_number, int nr_group) {
+    if (nr_group == 0) {
         return 0;
     }
 
-    if (current_group == M) {
-        int sum = 0;
-        for (int i = 0; i < M; i++) {
-            for (auto elem : group[i]) {
-                cout << elem << " ";
-                sum += elem;
-            }
-            cout << '\n';
+    if (nr_number <= 0) {
+        return MIN;
+    }
+
+    int &ret = dp[nr_number][nr_group];
+    if (ret != -1) {
+        return ret;
+    }
+
+    // i 포함 X
+    ret = solve(nr_number - 1, nr_group);
+
+    // i 포함
+    int temp_max = 0;
+    for (int i = nr_number; i >= 1; i--) {
+        temp_max += numbers[i];
+        int temp = solve(i - 2, nr_group - 1) + temp_max;
+
+        if (temp > ret) {
+            ret = temp;
         }
-        return sum;
     }
 
-    // 현재 숫자는 현재 그룹에서 패스
-    bool is_current_empty = group[current_group].empty();
-    int current_pass = solve(idx + 1, is_current_empty ? current_group : current_group + 1);
-
-    // 현재 숫자 현재 그룹에 선택
-    int current_choice = 0;
-    if (idx < N) {
-        group[current_group].push_back(numbers[idx]);
-        // 다음 수는 현재 그룹에 넣을 수 밖에 없음
-        current_choice = solve(idx + 1, current_group);
-        group[current_group].pop_back();
-    }
-
-    int ret = max(current_pass, current_choice);
     return ret;
 }
 
 int main() {
     cin >> N >> M;
 
+    numbers.push_back(0);
     for (int i = 0; i < N; i++) {
         int a;
         cin >> a;
         numbers.push_back(a);
     }
 
-    group.resize(M, vector<int>());
+    dp.resize(N + 1, vector<int>(M + 1, -1));
 
-    cout << solve(0, 0) << '\n';
+    cout << solve(N, M) << '\n';
+
+    /*
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
+            cout << dp[i][j] << ' ';
+        }
+        cout << '\n';
+    }
+    */
+
     return 0;
 }
