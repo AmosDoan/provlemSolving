@@ -105,3 +105,4 @@ add_executable(prob2228_exhasutive_search acmicpc/dp/prob2228_exhasutive_search.
 
 
 add_executable(21-mergeTwoSortedLists leetcode/21-mergeTwoSortedLists.cpp)
+add_executable(26-removeDuplicatesfromSortedArray leetcode/26-removeDuplicatesfromSortedArray.cpp)
