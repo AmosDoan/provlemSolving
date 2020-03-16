@@ -109,3 +109,4 @@ add_executable(26-removeDuplicatesfromSortedArray leetcode/26-removeDuplicatesfr
 add_executable(prob11057 acmicpc/dp/prob11057.cpp)
 add_executable(prob10971 acmicpc/ExhaustiveSearch/prob10971.cpp)
 add_executable(prob2606 acmicpc/bfs/prob2606.cpp)
+add_executable(prob2747 acmicpc/dfs/prob2747.cpp)
