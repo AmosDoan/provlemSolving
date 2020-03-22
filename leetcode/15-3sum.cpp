@@ -1,50 +1,48 @@
 //
-// Created by Amos on 2020/03/19.
+// Created by Amos on 2020/03/22.
 //
 #include <iostream>
 #include <vector>
+#include <set>
 
 using namespace std;
 
 class Solution {
 private:
-    void solve(int current, int level, vector<int> &candidate,
-               vector<vector<int>> &ret, vector<int> &nums) {
-        if (level == 3) {
-            candidate.push_back(nums[current]);
+    int size_of_input;
+    vector<int> numbers;
+    vector<vector<int>> result;
+    set<int> s;
 
-            int sum = 0;
-            for (auto n : candidate) {
-                sum += n;
+    void solve(int current_idx) {
+        int temp, expected_sum = numbers[current_idx];
+
+        for (int i = current_idx + 1; i < size_of_input; i++) {
+            for (int j = i + 1; j < size_of_input; j++) {
+                temp = numbers[i] + numbers[j];
+                if (temp == -expected_sum) {
+                    result.push_back({numbers[i] ,numbers[j], expected_sum});
+                    break;
+                }
             }
-
-            if (sum == 0) {
-                ret.push_back(candidate);
-            }
-
-            candidate.pop_back();
-            return;
         }
-
-        candidate.push_back(nums[current]);
-
-        for (int i = current + 1; i < nums.size(); i++) {
-            solve(i, level + 1, candidate, ret, nums);
-        }
-
-        candidate.pop_back();
     }
 
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
-        vector<vector<int>> ret;
+        numbers = nums;
+        size_of_input = nums.size();
 
         for (int i = 0; i < nums.size(); i++) {
-            vector<int> candidate;
-            solve(i, 1, candidate, ret, nums);
+            int expected_sum = nums[i];
+
+            if (s.find(expected_sum) == s.end()) {
+                solve(i);
+                s.insert(expected_sum);
+            }
         }
 
-        return ret;
+        return result;
     }
 };
 
