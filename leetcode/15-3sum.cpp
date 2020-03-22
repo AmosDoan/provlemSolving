@@ -8,37 +8,40 @@
 using namespace std;
 
 class Solution {
-private:
-    int size_of_input;
-    vector<int> numbers;
-    vector<vector<int>> result;
-    set<int> s;
-
-    void solve(int current_idx) {
-        int temp, expected_sum = numbers[current_idx];
-
-        for (int i = current_idx + 1; i < size_of_input; i++) {
-            for (int j = i + 1; j < size_of_input; j++) {
-                temp = numbers[i] + numbers[j];
-                if (temp == -expected_sum) {
-                    result.push_back({numbers[i] ,numbers[j], expected_sum});
-                    break;
-                }
-            }
-        }
-    }
-
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
-        numbers = nums;
-        size_of_input = nums.size();
+        vector<vector<int>> result;
 
-        for (int i = 0; i < nums.size(); i++) {
-            int expected_sum = nums[i];
+        if (nums.size() <= 2) {
+            return result;
+        }
 
-            if (s.find(expected_sum) == s.end()) {
-                solve(i);
-                s.insert(expected_sum);
+        sort(nums.begin(), nums.end());
+
+        for (int i = 0; i < nums.size() - 2; i++) {
+            if (i == 0 || (i > 0 && nums[i] != nums[i - 1])) {
+                int current = nums[i];
+                int left = i + 1;
+                int right = nums.size() - 1;
+
+                while (left < right) {
+                    int sum = nums[left] + nums[right] + current;
+                    if (sum == 0) {
+                        result.push_back({current, nums[left], nums[right]});
+                        while (left < right && nums[left] == nums[left + 1]) {
+                            left++;
+                        }
+                        while (left < right && nums[right] == nums[right - 1]) {
+                            right--;
+                        }
+                        left++;
+                        right--;
+                    } else if (sum > 0) {
+                        right--;
+                    } else if (sum < 0) {
+                        left++;
+                    }
+                }
             }
         }
 
@@ -59,10 +62,34 @@ int main() {
     Solution *s;
     vector<int> v;
 
+    /*
     s = new Solution();
     v = {-1, 0, 1, 2, -1, -4};
     printInfo(s->threeSum(v));
     delete s;
+
+    s = new Solution();
+    v = {};
+    printInfo(s->threeSum(v));
+    delete s;
+     */
+
+    s = new Solution();
+    v = {0, 0, 0};
+    printInfo(s->threeSum(v));
+    delete s;
+
+    /*
+    s = new Solution();
+    v = {1, 1, 1};
+    printInfo(s->threeSum(v));
+    delete s;
+
+    s = new Solution();
+    v = {-1, 0, 1, 2, -1, -4};
+    printInfo(s->threeSum(v));
+    delete s;
+     */
 
     return 0;
 }
