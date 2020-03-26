@@ -3,15 +3,28 @@
 //
 #include <iostream>
 #include <vector>
+#include <map>
 
 using namespace std;
 
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
-        for (int i = 0; i < nums.size(); i++) {
-            int num = nums[i];
+        map<int, int> m;
+        for (int num : nums) {
+            if (m.find(num) == m.end()) {
+                m[num] = 1;
+            } else {
+                m[num]++;
+            }
         }
+
+        for (auto & it : m) {
+            if (it.second == 1) {
+                return it.first;
+            }
+        }
+        return 0;
     }
 };
 
