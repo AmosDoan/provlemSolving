@@ -123,9 +123,24 @@ int solve() {
         time++;
         melt(visit);
 
+        /*
+        cout << "time : " << time << '\n';
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                cout << map[i][j] << " ";
+            }
+            cout << '\n';
+        }
+        cout << '\n';
+        */
+
         int num_ice = find();
-        if (num_ice > 1 || num_ice == 0) {
+        if (num_ice > 1) {
             return time;
+        }
+
+        if (num_ice == 0) {
+            return 0;
         }
     }
 }
