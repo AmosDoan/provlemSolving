@@ -14,8 +14,8 @@ vector<vector<int>> map;
 queue<pair<pair<int, int>, int>> q;
 vector<pair<int, int>> tomato;
 
-int dx[4] = {1, -1, 0, 0};
-int dy[4] = {0,  0, 1, -1};
+int d_row[4] = {1, -1, 0, 0};
+int d_col[4] = {0, 0, 1, -1};
 
 int solve() {
     int current_time = 0;
@@ -28,8 +28,8 @@ int solve() {
         current_time = current.second;
 
         for (int i = 0; i < 4; i++) {
-            int next_row = current_row + dx[i];
-            int next_col = current_col + dy[i];
+            int next_row = current_row + d_row[i];
+            int next_col = current_col + d_col[i];
 
             if (next_row >= 0 && next_row < N && next_col < M && next_col >= 0
                 && map[next_row][next_col] == 0) {

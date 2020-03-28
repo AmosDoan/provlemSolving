@@ -13,8 +13,8 @@ using namespace std;
 vector<vector<int>> map;
 int N;
 int L;
-int dRow[8] = {-1, -2, -2, -1, 1, 2, 2, 1};
-int dCol[8] = { 2, -1,  1, -2,-2,-1, 1, 2};
+int d_row[8] = {-1, -2, -2, -1, 1, 2, 2, 1};
+int d_col[8] = {2, -1, 1, -2, -2, -1, 1, 2};
 set<pair<int, int>> visit;
 
 int solve(pair<int, int> target, queue<pair<pair<int, int>, int>> &q) {
@@ -31,8 +31,8 @@ int solve(pair<int, int> target, queue<pair<pair<int, int>, int>> &q) {
         }
 
         for (int i = 0; i < 8; i++) {
-            int next_row = current_row + dRow[i];
-            int next_col = current_col + dCol[i];
+            int next_row = current_row + d_row[i];
+            int next_col = current_col + d_col[i];
 
             if (visit.find({next_row, next_col}) == visit.end() &&
                 next_row < L && next_row >= 0 && next_col < L && next_col >= 0) {

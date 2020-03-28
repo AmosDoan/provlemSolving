@@ -16,8 +16,8 @@ int N, M, H;
 vector<vector<vector<int>>> map;
 queue<pair<pair<int, pair<int, int>>, int>> q;
 
-int dx[6] = {0, 0, 1, -1, 0, 0};
-int dy[6] = {0, 0, 0, 0, 1, -1};
+int d_row[6] = {0, 0, 1, -1, 0, 0};
+int d_col[6] = {0, 0, 0, 0, 1, -1};
 int dz[6] = {1, -1, 0, 0, 0, 0};
 
 bool isValidRange(int next_value, int limit) {
@@ -36,8 +36,8 @@ int bfs() {
         current_level = current.second;
 
         for (int i = 0; i < 6; i++) {
-            int next_row = current_row + dy[i];
-            int next_col = current_col + dx[i];
+            int next_row = current_row + d_col[i];
+            int next_col = current_col + d_row[i];
             int next_h = current_h + dz[i];
 
             if (isValidRange(next_row, N) && isValidRange(next_col, M) &&
