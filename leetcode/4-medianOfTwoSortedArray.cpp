@@ -6,27 +6,29 @@
 
 using namespace std;
 
+// https://medium.com/@hazemu/finding-the-median-of-2-sorted-arrays-in-logarithmic-time-1d3f2ecbeb46 참고하자
 class Solution {
 private:
-    double solve(vector<int> v, int start, int end) {
-        if (start < end) {
-            int middle = (start + end) / 2;
-            double left = solve(v, start, middle);
-            double right = solve(v, middle + 1, end);
-            return (left + right) / 2.0F;
+    double findMedian(vector<int> sorted) {
+        int s = sorted.size();
+        if (s % 2 == 0) {
+            int right = s / 2;
+            int left = s / 2 - 1;
+            return (double)(sorted[left] + sorted[right]) / 2.0;
+        } else {
+            return (double)sorted[s / 2];
         }
-        return (double)v[start];
     }
 
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-        vector<int> num;
-        num.reserve(nums1.size() + nums2.size());
-        num.insert(num.end(), nums1.begin(), nums1.end());
-        num.insert(num.end(), nums2.begin(), nums2.end());
+        vector<int> buf;
+        buf.reserve(nums1.size() + nums2.size());
+        buf.insert(buf.end(), nums1.begin(), nums1.end());
+        buf.insert(buf.end(), nums2.begin(), nums2.end());
 
-        double ret = solve(num, 0, num.size() - 1);
-        return ret;
+        sort(buf.begin(), buf.end());
+        return findMedian(buf);
     }
 };
 
