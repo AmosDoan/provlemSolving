@@ -98,7 +98,7 @@ add_executable(20-validParentheses leetcode/20-validParentheses.cpp)
 add_executable(chain-of-responsibility design-pattern/chain-of-responsibility/chain-of-responsibility.cpp design-pattern/chain-of-responsibility/HelpHandler.cpp
         design-pattern/chain-of-responsibility/Widget.cpp design-pattern/chain-of-responsibility/Button.cpp design-pattern/chain-of-responsibility/Dialog.cpp
         design-pattern/chain-of-responsibility/Application.cpp)
-add_executable(11-ContainerWithMostWaterBruteForce leetcode/11-ContainerWithMostWaterBruteForce.cpp)
+add_executable(11-ContainerWithMostWaterBruteForce leetcode/11-ContainerWithMostWaterBruteForce.cpp leetcode/4-medianOfTwoSortedArray.cpp)
 add_executable(prob10844 acmicpc/dp/prob10844.cpp)
 add_executable(prob2228 acmicpc/dp/prob2228.cpp)
 add_executable(prob2228_exhasutive_search acmicpc/dp/prob2228_exhasutive_search.cpp)
@@ -125,3 +125,4 @@ add_executable(prob11812 acmicpc/graph/prob11812.cpp)
 add_executable(24-swapNodesInPairs leetcode/24-swapNodesInPairs.cpp)
 add_executable(prob1003 acmicpc/dp/prob1003.cpp)
 add_executable(prob1003_bottom_up acmicpc/dp/prob1003_bottom_up.cpp)
+add_executable(4-medianOfTwoSortedArray leetcode/4-medianOfTwoSortedArray.cpp)
