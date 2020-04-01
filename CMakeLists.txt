@@ -130,3 +130,5 @@ add_executable(prob9461 acmicpc/dp/prob9461.cpp)
 
 add_executable(prob9205 acmicpc/dfs/prob9205.cpp)
 add_executable(prob2752 acmicpc/sorting/prob2752.cpp)
+add_executable(prob2750 acmicpc/sorting/prob2750.cpp)
+add_executable(prob2751 acmicpc/sorting/prob2751.cpp)
