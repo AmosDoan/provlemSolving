@@ -129,3 +129,4 @@ add_executable(4-medianOfTwoSortedArray leetcode/4-medianOfTwoSortedArray.cpp)
 add_executable(prob9461 acmicpc/dp/prob9461.cpp)
 
 add_executable(prob9205 acmicpc/dfs/prob9205.cpp)
+add_executable(prob2752 acmicpc/sorting/prob2752.cpp)
