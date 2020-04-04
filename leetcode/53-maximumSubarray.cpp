@@ -50,5 +50,10 @@ int main() {
     cout << s->maxSubArray(v) << '\n';
     delete s;
 
+    s = new Solution();
+    v = {10, -4, 3, 1, 5, 6, -35, 12, 21, -1};
+    cout << s->maxSubArray(v) << '\n';
+    delete s;
+
     return 0;
 }
