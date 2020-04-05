@@ -6,6 +6,8 @@
 
 using namespace std;
 
+/*
+ * Below class O(n^2) time complexity
 class Solution {
 public:
     void moveZeroes(vector<int>& nums) {
@@ -17,6 +19,41 @@ public:
                     nums[j] = nums[j + 1];
                     nums[j + 1] = temp;
                 }
+            }
+        }
+    }
+};
+*/
+
+// Time complexity O(n)
+/*
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int nonZeroElement = 0;
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] != 0) {
+                nums[nonZeroElement++] = nums[i];
+            }
+        }
+
+        // Suboptimal, since unnecessary 0 move operations can occurred if [0, 0, 0, ... , 1]
+        for (int i = nonZeroElement; i < nums.size(); i++) {
+            nums[i] = 0;
+        }
+    }
+};
+*/
+
+// Time complexity O(n) and prevent suboptimal
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        for (int i = 0, lastNonZero = 0; i < nums.size(); i++) {
+            if (nums[i] != 0) {
+                int temp = nums[i];
+                nums[i] = 0;
+                nums[lastNonZero++] = temp;
             }
         }
     }
