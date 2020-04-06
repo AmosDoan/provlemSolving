@@ -8,6 +8,7 @@
 using namespace std;
 
 int N;
+vector<int> counter;
 
 int main() {
     ios_base::sync_with_stdio(false);
@@ -15,18 +16,18 @@ int main() {
 
     cin >> N;
 
-    vector<int> ret;
-    ret.reserve(N);
+    counter.resize(10001, 0);
     for (int i = 0; i < N; i++) {
         int n;
         cin >> n;
-        ret.push_back(n);
+        counter[n]++;
     }
 
-    sort(ret.begin(), ret.end());
-
-    for (auto elem : ret) {
-        cout << elem << '\n';
+    for (int i = 0; i < 10001; i++) {
+        for (int j = 0; j < counter[i]; j++) {
+            cout << i << '\n';
+        }
     }
+
     return 0;
 }
