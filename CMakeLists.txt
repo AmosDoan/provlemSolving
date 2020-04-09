@@ -148,3 +148,4 @@ add_executable(122-bestTimeToBuyAndSellStock2 leetcode/122-bestTimeToBuyAndSellS
 add_executable(49-groupAnagrams leetcode/49-groupAnagrams.cpp)
 add_executable(countingElements leetcode/countingElements.cpp)
 add_executable(876-middleOftheLinkedList leetcode/876-middleOftheLinkedList.cpp)
+add_executable(844-backspaceStringCompare leetcode/844-backspaceStringCompare.cpp)
