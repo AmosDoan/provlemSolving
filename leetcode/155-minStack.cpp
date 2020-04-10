@@ -2,7 +2,6 @@
 // Created by Amos on 2020/04/10.
 //
 #include <iostream>
-#include <vector>
 #include <stack>
 
 using namespace std;
@@ -11,50 +10,37 @@ class MinStack {
 public:
     /** initialize your data structure here. */
     MinStack() {
-        min = INT_MAX;
+        minimum = INT_MAX;
     }
 
     void push(int x) {
-        st.push(x);
-        q.push_back(x);
-
-        if (x < min) {
-            min = x;
+        if (x < minimum) {
+            minimum = x;
         }
+        st.push({x, minimum});
     }
 
     void pop() {
-        int target = st.top();
-
-        for (auto it = q.begin(); it != q.end(); ++it) {
-            if (*it == target) {
-                q.erase(it);
-                break;
-            }
-        }
-
-        if (q.empty()) {
-            min = INT_MAX;
-        } else {
-            sort(q.begin(), q.end());
-            min = *q.begin();
-        }
-
         st.pop();
+
+        if (st.empty()) {
+            minimum = INT_MAX;
+        } else {
+            minimum = st.top().second;
+        }
     }
 
     int top() {
-        return st.top();
+        return st.top().first;
     }
 
     int getMin() {
-        return min;
+        return st.top().second;
     }
 
 private:
-    stack<int> st;
-    vector<int> q;
-    int min;
+    stack<pair<int, int>> st;
+    int minimum;
 };
 
 /**
