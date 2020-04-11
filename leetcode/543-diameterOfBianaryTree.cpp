@@ -12,6 +12,7 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
+/*
 class Solution {
 private:
     // height, diameter
@@ -52,6 +53,33 @@ public:
        }
        auto ret = getDiameter(root);
        return max(ret.first, ret.second);
+    }
+};
+*/
+
+// L + R + 1의 max를 구해놓고 리턴할 때 1을 빼서 리턴한다.
+class Solution {
+private:
+    int max_diameter;
+
+    int dfs(TreeNode* node) {
+        if (node == nullptr) {
+            return 0;
+        }
+
+        int max_left = dfs(node->left);
+        int max_right = dfs(node->right);
+
+        max_diameter = max(max_diameter, max_left + max_right + 1);
+
+        return max(max_left, max_right) + 1;
+    }
+
+public:
+    int diameterOfBinaryTree(TreeNode* root) {
+        max_diameter = 0;
+        dfs(root);
+        return max_diameter - 1;
     }
 };
 
