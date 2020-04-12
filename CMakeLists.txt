@@ -152,3 +152,6 @@ add_executable(844-backspaceStringCompare leetcode/844-backspaceStringCompare.cp
 add_executable(155-minStack leetcode/155-minStack.cpp)
 add_executable(543-diameterOfBianaryTree leetcode/543-diameterOfBianaryTree.cpp)
 add_executable(reverse_string practice/string/reverse_string.cpp)
+add_executable(dedup practice/linked_list/dedup.cpp)
+add_executable(queue_using_stack practice/stack/queue_using_stack.cpp)
+add_executable(isBalancedTree practice/tree/isBalancedTree.cpp)

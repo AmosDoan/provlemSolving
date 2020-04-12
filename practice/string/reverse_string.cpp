@@ -22,10 +22,6 @@ void reverseString(char *str) {
 }
 
 int main() {
-
-    // String literal (read only)
-    //char *s = "abc";
-
     char s[] = "abc";
     reverseString(s);
     cout << s << '\n';
