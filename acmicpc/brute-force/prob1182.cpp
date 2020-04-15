@@ -10,6 +10,7 @@ int N, S;
 vector<int> numbers;
 int ret;
 
+/*
 void dfs(int current, int &sum) {
     if (current >= numbers.size()) {
         return;
@@ -31,6 +32,24 @@ int solve() {
     for (int i = 0; i < numbers.size(); i++) {
         int sum = 0;
         dfs(i, sum);
+    }
+}
+*/
+
+int solve() {
+    unsigned int total = (1 << N) - 1;
+
+    for (int subset = total; subset; subset = ((subset - 1) & total)) {
+        int sum = 0;
+        for (int i = 0; i < N; i++) {
+            if (subset & (1 << i)) {
+                sum += numbers[i];
+            }
+        }
+
+        if (sum == S) {
+            ret++;
+        }
     }
 }
 
