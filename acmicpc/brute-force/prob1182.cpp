@@ -8,37 +8,30 @@ using namespace std;
 
 int N, S;
 vector<int> numbers;
+int ret;
+
+void dfs(int current, int &sum) {
+    if (current >= numbers.size()) {
+        return;
+    }
+
+    sum += numbers[current];
+    if (sum == S) {
+        ret++;
+    }
+
+    for (int i = current + 1; i < numbers.size(); i++) {
+        dfs(i, sum);
+    }
+
+    sum -= numbers[current];
+}
 
 int solve() {
-    vector<int> sum;
-    sum.push_back(numbers[0]);
-
-   for (int i = 1; i < numbers.size(); i++) {
-       int temp_sum = numbers[i] + sum[i - 1];
-       sum.push_back(temp_sum);
-   }
-
-   /*
-   for (auto s : sum) {
-       cout << s << ' ';
-   }
-   cout << '\n';
-   */
-
-   int ret = 0;
-   for (int i = 0; i < sum.size(); i++) {
-       if (sum[i] == S) {
-           ret++;
-       }
-
-       for (int j = i + 1; j < sum.size(); j++) {
-           int partial_sum = sum[j] - sum[i];
-           if (partial_sum == S) {
-               ret++;
-           }
-       }
-   }
-   return ret;
+    for (int i = 0; i < numbers.size(); i++) {
+        int sum = 0;
+        dfs(i, sum);
+    }
 }
 
 int main() {
@@ -50,7 +43,8 @@ int main() {
         numbers.push_back(c);
     }
 
-    cout << solve() << '\n';
+    solve();
+    cout << ret << '\n';
 
     return 0;
 }
