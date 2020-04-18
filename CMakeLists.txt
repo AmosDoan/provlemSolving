@@ -98,7 +98,7 @@ add_executable(20-validParentheses leetcode/20-validParentheses.cpp)
 add_executable(chain-of-responsibility design-pattern/chain-of-responsibility/chain-of-responsibility.cpp design-pattern/chain-of-responsibility/HelpHandler.cpp
         design-pattern/chain-of-responsibility/Widget.cpp design-pattern/chain-of-responsibility/Button.cpp design-pattern/chain-of-responsibility/Dialog.cpp
         design-pattern/chain-of-responsibility/Application.cpp)
-add_executable(11-ContainerWithMostWaterBruteForce leetcode/11-ContainerWithMostWaterBruteForce.cpp leetcode/4-medianOfTwoSortedArray.cpp)
+add_executable(11-ContainerWithMostWaterBruteForce leetcode/11-ContainerWithMostWaterBruteForce.cpp leetcode/4-medianOfTwoSortedArray.cpp leetcode/64-minimumPathSum.cpp)
 add_executable(prob10844 acmicpc/dp/prob10844.cpp)
 add_executable(prob2228 acmicpc/dp/prob2228.cpp)
 add_executable(prob2228_exhasutive_search acmicpc/dp/prob2228_exhasutive_search.cpp)
@@ -164,3 +164,4 @@ add_executable(prob1182 acmicpc/brute-force/prob1182.cpp)
 add_executable(238-productOfArrayExceptSelf leetcode/238-productOfArrayExceptSelf.cpp)
 add_executable(678-validParenthesisString leetcode/678-validParenthesisString.cpp)
 add_executable(200-numberOfIslands leetcode/200-numberOfIslands.cpp)
+add_executable(64-minimumPathSum leetcode/64-minimumPathSum.cpp)
