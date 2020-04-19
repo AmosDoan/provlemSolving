@@ -165,3 +165,4 @@ add_executable(238-productOfArrayExceptSelf leetcode/238-productOfArrayExceptSel
 add_executable(678-validParenthesisString leetcode/678-validParenthesisString.cpp)
 add_executable(200-numberOfIslands leetcode/200-numberOfIslands.cpp)
 add_executable(64-minimumPathSum leetcode/64-minimumPathSum.cpp)
+add_executable(33-searchInRotatedSortedArray leetcode/33-searchInRotatedSortedArray.cpp)
