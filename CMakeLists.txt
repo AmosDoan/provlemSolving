@@ -166,3 +166,4 @@ add_executable(678-validParenthesisString leetcode/678-validParenthesisString.cp
 add_executable(200-numberOfIslands leetcode/200-numberOfIslands.cpp)
 add_executable(64-minimumPathSum leetcode/64-minimumPathSum.cpp)
 add_executable(33-searchInRotatedSortedArray leetcode/33-searchInRotatedSortedArray.cpp)
+add_executable(1008-constructBinarySearchTreeFromPreorderTraversal leetcode/1008-constructBinarySearchTreeFromPreorderTraversal.cpp)
