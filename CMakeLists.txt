@@ -171,3 +171,4 @@ add_executable(leftmostColumnWithAtLeastAOne leetcode/leftmostColumnWithAtLeastO
 add_executable(560-subarraySumEqualsK leetcode/560-subarraySumEqualsK.cpp)
 add_executable(201-bitwiseANDOfNumbersRange leetcode/201-bitwiseANDOfNumbersRange.cpp)
 add_executable(146-LRUCache leetcode/146-LRUCache.cpp)
+add_executable(35-searchInsertPosition leetcode/35-searchInsertPosition.cpp)
