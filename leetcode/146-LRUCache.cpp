@@ -83,3 +83,8 @@ int main() {
 
     return 0;
 }
+
+static const auto a = []() {
+    ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+    return 0;
+}();
