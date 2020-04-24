@@ -2,8 +2,8 @@
 // Created by Amos on 2020/04/24.
 //
 #include <iostream>
-#include <map>
-#include <deque>
+#include <unordered_map>
+#include <list>
 
 using namespace std;
 
@@ -18,13 +18,7 @@ public:
             return -1;
         }
 
-        for (auto it = reference.begin(); it != reference.end(); ++it) {
-            if (*it == key) {
-                reference.erase(it);
-                break;
-            }
-        }
-
+        reference.remove(key);
         reference.push_back(key);
         return m[key];
     }
@@ -32,13 +26,7 @@ public:
     void put(int key, int value) {
         if (m.find(key) != m.end()) {
             m.erase(key);
-
-            for (auto it = reference.begin(); it != reference.end(); ++it) {
-                if (*it == key) {
-                    reference.erase(it);
-                    break;
-                }
-            }
+            reference.remove(key);
         }
 
         if (m.size() >= capacity) {
@@ -52,16 +40,14 @@ public:
     }
 
 private:
-    // key (value, access count)
-    map<int, int> m;
-    deque<int> reference;
+    unordered_map<int, int> m;
+    list<int> reference;
     int capacity;
 };
 
 int main() {
     LRUCache *lruCache;
 
-    /*
     lruCache = new LRUCache(2);
     lruCache->put(1, 1);
     lruCache->put(2, 2);
@@ -84,7 +70,6 @@ int main() {
     cout << lruCache->get(2) << ' ';
     cout << '\n';
     delete lruCache;
-    */
 
     lruCache = new LRUCache(2);
     lruCache->put(2, 1);
