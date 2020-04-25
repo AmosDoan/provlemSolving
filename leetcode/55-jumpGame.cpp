@@ -11,37 +11,43 @@ class Solution {
 public:
     Solution() {}
 
-    bool jump(int current_index, vector<int>& nums) {
+    int jump(int current_index, vector<int>& nums) {
         if (current_index == nums.size() - 1) {
-            return true;
+            return 1;
         }
 
         if (current_index >= nums.size()) {
-            return false;
+            return 0;
+        }
+
+        int &ret = cache[current_index];
+        if (ret != -1) {
+            return ret;
         }
 
         int maximum_jump = nums[current_index];
 
         if (maximum_jump == 0) {
-            return false;
+            return ret = 0;
         }
 
-        for (int i = maximum_jump; i > 0; i--) {
-            int next_index = current_index + i;
-            bool ret = jump(next_index, nums);
-            if (ret) {
-                return true;
+        int further_jump = min((unsigned long)current_index + maximum_jump, nums.size() - 1);
+        for (int i = further_jump; i > current_index; i--) {
+            if (jump(i, nums)) {
+                return ret = 1;
             }
         }
-        return false;
+        return ret = 0;
     }
 
     bool canJump(vector<int>& nums) {
-        return jump(0, nums);
+        cache.resize(nums.size(), -1);
+        return jump(0, nums) == 1;
     }
 
 private:
     set<int> visit;
+    vector<int> cache;
 };
 
 void printBoolean(bool result) {
@@ -56,7 +62,6 @@ int main() {
     Solution *s;
     vector<int> v;
 
-    /*
     s = new Solution();
     v = {2, 3, 1, 1, 4};
     printBoolean(s->canJump(v));
@@ -71,10 +76,14 @@ int main() {
     v = {2, 0};
     printBoolean(s->canJump(v));
     delete s;
-    */
 
     s = new Solution();
     v = {3, 2, 1, 1, 0, 0};
+    printBoolean(s->canJump(v));
+    delete s;
+
+    s = new Solution();
+    v = {2, 5, 0, 0};
     printBoolean(s->canJump(v));
     delete s;
 }
