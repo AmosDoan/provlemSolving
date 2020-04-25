@@ -3,7 +3,6 @@
 //
 #include <iostream>
 #include <vector>
-#include <set>
 
 using namespace std;
 
@@ -11,43 +10,17 @@ class Solution {
 public:
     Solution() {}
 
-    int jump(int current_index, vector<int>& nums) {
-        if (current_index == nums.size() - 1) {
-            return 1;
-        }
-
-        if (current_index >= nums.size()) {
-            return 0;
-        }
-
-        int &ret = cache[current_index];
-        if (ret != -1) {
-            return ret;
-        }
-
-        int maximum_jump = nums[current_index];
-
-        if (maximum_jump == 0) {
-            return ret = 0;
-        }
-
-        int further_jump = min((unsigned long)current_index + maximum_jump, nums.size() - 1);
-        for (int i = further_jump; i > current_index; i--) {
-            if (jump(i, nums)) {
-                return ret = 1;
+    bool canJump(vector<int>& nums) {
+        int lastPos = nums.size() - 1;
+        for (int i = nums.size() - 2; i >= 0; i--) {
+            bool possible = i + nums[i] >= lastPos;
+            if (possible) {
+                lastPos = i;
             }
         }
-        return ret = 0;
-    }
 
-    bool canJump(vector<int>& nums) {
-        cache.resize(nums.size(), -1);
-        return jump(0, nums) == 1;
+        return lastPos == 0;
     }
-
-private:
-    set<int> visit;
-    vector<int> cache;
 };
 
 void printBoolean(bool result) {
