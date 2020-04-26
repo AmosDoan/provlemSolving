@@ -1,6 +1,3 @@
-//
-// Created by Amos on 2020/04/24.
-//
 #include <iostream>
 #include <vector>
 

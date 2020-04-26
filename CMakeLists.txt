@@ -173,3 +173,4 @@ add_executable(201-bitwiseANDOfNumbersRange leetcode/201-bitwiseANDOfNumbersRang
 add_executable(146-LRUCache leetcode/146-LRUCache.cpp)
 add_executable(35-searchInsertPosition leetcode/35-searchInsertPosition.cpp)
 add_executable(55-jumpGame leetcode/55-jumpGame.cpp)
+add_executable(1143-longestCommonSubsequence leetcode/1143-longestCommonSubsequence.cpp)
