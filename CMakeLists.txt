@@ -180,3 +180,4 @@ add_executable(124-binaryTreeMaximumPathSum leetcode/124-binaryTreeMaximumPathSu
 add_executable(checkIfAStringIsAValidSequenceFromRootToLeavesPathInABinaryTree leetcode/checkIfAStringIsAValidSequenceFromRootToLeavesPathInABinaryTree.cpp)
 add_executable(278-FirstBadVersion leetcode/278-FirstBadVersion.cpp)
 add_executable(prob11399 acmicpc/greedy/prob11399.cpp)
+add_executable(prob1461 acmicpc/greedy/prob1461.cpp)
