@@ -12,42 +12,45 @@ vector<int> positive_locations;
 
 int N, M;
 
-int solve() {
-    vector<int> trace;
+int calc(vector<int>& v1, vector<int>& v2) {
+    int ret = 0;
+    for (int i = v1.size() - 1 - M; i >= 0; i -= M) {
+        ret += 2 * v1[i];
+    }
 
+    for (int i = v2.size() - 1; i >= 0; i -= M) {
+        ret += 2 * v2[i];
+    }
+    return ret;
+}
+
+int solve() {
     // positive
     sort(positive_locations.begin(), positive_locations.end());
 
     // negative
-    sort(negative_locations.begin(), negative_locations.end(), std::greater<int>());
-
-    int i;
-    for (i = M - 1; i < positive_locations.size(); ) {
-        trace.push_back(positive_locations[i]);
-        i += M;
-    }
-
-    while (i < positive_locations.size()) {
-        trace.push_back(positive_locations[i]);
-    }
-
-    for (int i = M - 1; i < negative_locations.size(); ) {
-        trace.push_back(-negative_locations[i]);
-        i += M;
-    }
-
-    i++;
-    while (i < negative_locations.size()) {
-        trace.push_back(-negative_locations[i++]);
-    }
-
-    sort(trace.begin(), trace.end());
+    sort(negative_locations.begin(), negative_locations.end());
 
     int ret = 0;
-    for (int i = 0; i < trace.size() - 1; i++) {
-        ret += 2 * trace[i];
+    bool isMaxPositive = true;
+    if (negative_locations.empty()) {
+        ret += positive_locations[positive_locations.size() - 1];
+    } else if (positive_locations.empty()) {
+        isMaxPositive = false;
+        ret += negative_locations[negative_locations.size() - 1];
+    } else if (negative_locations[negative_locations.size() - 1] >
+        positive_locations[positive_locations.size() - 1]) {
+        ret += negative_locations[negative_locations.size() - 1];
+        isMaxPositive = false;
+    } else {
+        ret += positive_locations[positive_locations.size() - 1];
     }
-    ret += trace[trace.size() - 1];
+
+    if (isMaxPositive) {
+        ret += calc(positive_locations, negative_locations);
+    } else {
+        ret += calc(negative_locations, positive_locations);
+    }
 
     return ret;
 }
@@ -59,7 +62,7 @@ int main() {
         int book;
         cin >> book;
         if (book < 0) {
-            negative_locations.push_back(book);
+            negative_locations.push_back(-book);
         } else {
             positive_locations.push_back(book);
         }
