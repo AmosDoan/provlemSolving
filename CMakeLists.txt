@@ -181,3 +181,5 @@ add_executable(checkIfAStringIsAValidSequenceFromRootToLeavesPathInABinaryTree l
 add_executable(278-FirstBadVersion leetcode/278-FirstBadVersion.cpp)
 add_executable(prob11399 acmicpc/greedy/prob11399.cpp)
 add_executable(prob1461 acmicpc/greedy/prob1461.cpp)
+add_executable(prob1927 acmicpc/data-structure/prob1927.cpp)
+add_executable(prob11279 acmicpc/data-structure/prob11279.cpp)
