@@ -3,30 +3,45 @@
 //
 #include <iostream>
 #include <vector>
+#include <queue>
 #include <set>
 
 using namespace std;
 
 typedef pair<int, int> Coord;
-typedef set<Coord> Map;
 
 int T;
-vector<pair<int, int>> visit;
+set<Coord> visit;
+vector<Coord> stores;
 
-bool traverse(int x, int y, int beer, Coord &target) {
-
-    if (beer == 0) {
-        return false;
-    }
-
-    if (x == target.first && y == target.second) {
-        return true;
-    }
-
+bool safeManhattan(Coord a, Coord b) {
+    return (abs(a.first - b.first) + abs(a.second - b.second)) <= 1000;
 }
 
-bool solve(Coord &start, Coord &target, Map &m) {
+bool solve(Coord &start, Coord &target) {
+    queue<Coord> q;
 
+    q.push({start.first, start.second});
+
+    while (!q.empty()) {
+        Coord current = q.front();
+        q.pop();
+
+        if (safeManhattan(target, current)) {
+            return true;
+        }
+
+        for (auto store : stores) {
+            if (visit.find(store) == visit.end()) {
+                if (safeManhattan(current, store)) {
+                    visit.insert(store);
+                    q.push({store.first, store.second});
+                }
+            }
+        }
+    }
+
+    return false;
 }
 
 int main() {
@@ -40,20 +55,22 @@ int main() {
 
         Coord start = {x, y};
 
-        Map m;
         for (int j = 0; j < n_store; j++) {
             cin >> x >> y;
-            m.insert({x, y});
+            stores.emplace_back(x, y);
         }
 
         cin >> x >> y;
 
         Coord target = {x, y};
-        if (solve(start, target, m)) {
+        if (solve(start, target)) {
             cout << "happy" << '\n';
         } else {
             cout << "sad" << '\n';
         }
+
+        visit.clear();
+        stores.clear();
     }
 
     return 0;
