@@ -37,6 +37,7 @@ int traverse(int current, int sum, unsigned int visit) {
 }
 
 int solve() {
+    // N은 300까지 될 수 있으므로 timeout
     int visit_size = (1 << N) - 1;
     dp.resize(N, vector<int>(visit_size, -1));
     return traverse(N - 1, 0, 1 << (N - 1));
