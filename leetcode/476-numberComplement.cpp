@@ -3,9 +3,28 @@
 //
 #include <iostream>
 #include <vector>
+#include <cmath>
 
 using namespace std;
 
+class Solution {
+public:
+    int findComplement(int num)
+    {
+        int bit_count = 0;
+        int temp = num;
+
+        while(temp != 0)
+        {
+            bit_count++;
+            temp >>= 1;
+        }
+
+        return num ^ int(pow(2, bit_count) - 1);
+    }
+};
+
+/*
 class Solution {
 public:
     int findComplement(int num) {
@@ -23,6 +42,7 @@ public:
         return ret;
     }
 };
+*/
 
 int main() {
     Solution *s;
