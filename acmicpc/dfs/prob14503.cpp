@@ -21,7 +21,7 @@ int back_col[4] = {0, -1, 0, 1};
 vector<vector<int>> map;
 
 void dfs(int current_row, int current_col, int current_direction) {
-    if (map[current_row][current_col] != 0) {
+    if (map[current_row][current_col] == 1) {
         return;
     }
 
@@ -64,6 +64,15 @@ void dfs(int current_row, int current_col, int current_direction) {
 int solve() {
     dfs(start_row, start_col, start_direction);
     int nr_clean = 0;
+
+    /*
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
+            cout << map[i][j] << " ";
+        }
+        cout << '\n';
+    }
+    */
 
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < M; j++) {
