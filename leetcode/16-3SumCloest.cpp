@@ -5,64 +5,52 @@
 using namespace std;
 
 class Solution {
-private:
-    set<int> visit;
-    vector<int> nums;
-    vector<int> result;
-    int min;
-    int target;
-
-    void traverse(int current_idx, int len, int sum) {
-        if (len == 2) {
-            sum += nums[current_idx];
-            if (abs(target - sum) < min) {
-                min = sum;
-            }
-            return;
-        }
-
-        visit.insert(current_idx);
-        sum += nums[current_idx];
-
-        for (int i = 0; i < nums.size(); i++) {
-            if (visit.find(i) == visit.end()) {
-                traverse(i, len + 1, sum);
-            }
-        }
-
-        visit.erase(current_idx);
-
-    }
-
 public:
     int threeSumClosest(vector<int>& nums, int target) {
-        this->nums = nums;
-        this->target = target;
+       sort(nums.begin(), nums.end());
 
-        min = INT_MAX;
+       int diff = INT_MAX;
+       for (int i = 0; i < nums.size() && diff != 0; i++) {
+           int left = i + 1;
+           int right = nums.size() - 1;
 
-        for (int i = 0; i < nums.size(); i++) {
-            traverse(i, 0, 0);
-        }
+           while (left < right) {
+               int sum = nums[i] + nums[left] + nums[right];
 
-        return min;
+               if (abs(target - sum) < abs(diff)) {
+                   diff = target - sum;
+               }
+
+               if (sum >= target) {
+                   right--;
+               } else {
+                   left++;
+               }
+           }
+       }
+
+       return target - diff;
     }
 };
 
 int main() {
     Solution *s;
     vector<int> params = {-1, 2, 1, -4};
-
-    /*
     s = new Solution();
     cout << s->threeSumClosest(params, 1) << '\n';
     delete s;
-    */
 
+    /*
     params = {1, 1, 1, 0};
     s = new Solution();
     cout << s->threeSumClosest(params, -100) << '\n';
     delete s;
+
+    params = {0, 2, 1, -3};
+    s = new Solution();
+    cout << s->threeSumClosest(params, 1) << '\n';
+    delete s;
+    */
 }
 
 static const auto _ = []() {
