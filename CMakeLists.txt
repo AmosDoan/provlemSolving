@@ -194,3 +194,4 @@ add_executable(387-firstUniqueCharacterInAString leetcode/387-firstUniqueCharact
 add_executable(46-permutation leetcode/46-permutation.cpp)
 add_executable(16-3SumCloest leetcode/16-3SumCloest.cpp)
 add_executable(17-LetterCombinationsOfAPhoneNumber leetcode/17-LetterCombinationsOfAPhoneNumber.cpp)
+add_executable(104-MaximumDepthOfBinaryTree leetcode/104-MaximumDepthOfBinaryTree.cpp)
