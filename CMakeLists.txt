@@ -98,7 +98,7 @@ add_executable(20-validParentheses leetcode/20-validParentheses.cpp)
 add_executable(chain-of-responsibility design-pattern/chain-of-responsibility/chain-of-responsibility.cpp design-pattern/chain-of-responsibility/HelpHandler.cpp
         design-pattern/chain-of-responsibility/Widget.cpp design-pattern/chain-of-responsibility/Button.cpp design-pattern/chain-of-responsibility/Dialog.cpp
         design-pattern/chain-of-responsibility/Application.cpp)
-add_executable(11-ContainerWithMostWaterBruteForce leetcode/11-ContainerWithMostWaterBruteForce.cpp leetcode/4-medianOfTwoSortedArray.cpp leetcode/64-minimumPathSum.cpp leetcode/46-permutation.cpp leetcode/16-3SumCloest.cpp leetcode/204-countPrimes.cpp leetcode/203-RemoveLinkedListElements.cpp leetcode/206-reverseLinkedList.cpp)
+add_executable(11-ContainerWithMostWaterBruteForce leetcode/11-ContainerWithMostWaterBruteForce.cpp leetcode/4-medianOfTwoSortedArray.cpp leetcode/64-minimumPathSum.cpp leetcode/46-permutation.cpp leetcode/16-3SumCloest.cpp leetcode/204-countPrimes.cpp leetcode/203-RemoveLinkedListElements.cpp leetcode/206-reverseLinkedList.cpp leetcode/242-validAnagram.cpp)
 add_executable(prob10844 acmicpc/dp/prob10844.cpp)
 add_executable(prob2228 acmicpc/dp/prob2228.cpp)
 add_executable(prob2228_exhasutive_search acmicpc/dp/prob2228_exhasutive_search.cpp)
@@ -198,3 +198,4 @@ add_executable(104-MaximumDepthOfBinaryTree leetcode/104-MaximumDepthOfBinaryTre
 add_executable(47-permutationsII  "leetcode/47-permutationsII .cpp")
 add_executable(204-countPrimes leetcode/204-countPrimes.cpp)
 add_executable(203-RemoveLinkedListElements leetcode/203-RemoveLinkedListElements.cpp)
+add_executable(242-validAnagram leetcode/242-validAnagram.cpp)
