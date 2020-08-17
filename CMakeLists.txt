@@ -98,7 +98,7 @@ add_executable(20-validParentheses leetcode/20-validParentheses.cpp)
 add_executable(chain-of-responsibility design-pattern/chain-of-responsibility/chain-of-responsibility.cpp design-pattern/chain-of-responsibility/HelpHandler.cpp
         design-pattern/chain-of-responsibility/Widget.cpp design-pattern/chain-of-responsibility/Button.cpp design-pattern/chain-of-responsibility/Dialog.cpp
         design-pattern/chain-of-responsibility/Application.cpp)
-add_executable(11-ContainerWithMostWaterBruteForce leetcode/11-ContainerWithMostWaterBruteForce.cpp leetcode/4-medianOfTwoSortedArray.cpp leetcode/64-minimumPathSum.cpp leetcode/46-permutation.cpp leetcode/16-3SumCloest.cpp leetcode/204-countPrimes.cpp leetcode/203-RemoveLinkedListElements.cpp leetcode/206-reverseLinkedList.cpp leetcode/242-validAnagram.cpp leetcode/160-intersectionOfTwoLinkedLists.cpp)
+add_executable(11-ContainerWithMostWaterBruteForce leetcode/11-ContainerWithMostWaterBruteForce.cpp leetcode/4-medianOfTwoSortedArray.cpp leetcode/64-minimumPathSum.cpp leetcode/46-permutation.cpp leetcode/16-3SumCloest.cpp leetcode/204-countPrimes.cpp leetcode/203-RemoveLinkedListElements.cpp leetcode/206-reverseLinkedList.cpp leetcode/242-validAnagram.cpp leetcode/160-intersectionOfTwoLinkedLists.cpp leetcode/617-mergeTwoBinaryTrees.cpp)
 add_executable(prob10844 acmicpc/dp/prob10844.cpp)
 add_executable(prob2228 acmicpc/dp/prob2228.cpp)
 add_executable(prob2228_exhasutive_search acmicpc/dp/prob2228_exhasutive_search.cpp)
@@ -205,3 +205,4 @@ add_executable(102-binaryTreeLevelOrderTraversal leetcode/102-binaryTreeLevelOrd
 add_executable(141-linkedListCycle leetcode/141-linkedListCycle.cpp)
 add_executable(142-linkedListCycleII leetcode/142-linkedListCycleII.cpp)
 add_executable(66-plusOne leetcode/66-plusOne.cpp)
+add_executable(617-mergeTwoBinaryTrees leetcode/617-mergeTwoBinaryTrees.cpp)
