@@ -216,3 +216,4 @@ add_executable(1119-removeVowelsFromAString leetcode/1119-removeVowelsFromAStrin
 add_executable(226-invertBinaryTree leetcode/226-invertBinaryTree.cpp)
 add_executable(572-subtreeOfAnotherTree leetcode/572-subtreeOfAnotherTree.cpp)
 add_executable(763-partitionLabels leetcode/763-partitionLabels.cpp)
+add_executable(973-kClosestPointsToOrigin leetcode/973-kClosestPointsToOrigin.cpp)
