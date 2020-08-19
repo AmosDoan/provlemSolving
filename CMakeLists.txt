@@ -220,3 +220,4 @@ add_executable(973-kClosestPointsToOrigin leetcode/973-kClosestPointsToOrigin.cp
 add_executable(692-topKFrequentWords leetcode/692-topKFrequentWords.cpp)
 add_executable(42-trappingRainWater_bruteForce leetcode/42-trappingRainWater_bruteForce.cpp)
 add_executable(42-trappingRainWater_memoization leetcode/42-trappingRainWater_memoization.cpp)
+add_executable(938-rangeSumOfBST leetcode/938-rangeSumOfBST.cpp)
