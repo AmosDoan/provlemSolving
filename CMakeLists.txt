@@ -223,3 +223,4 @@ add_executable(42-trappingRainWater_memoization leetcode/42-trappingRainWater_me
 add_executable(938-rangeSumOfBST leetcode/938-rangeSumOfBST.cpp)
 add_executable(139-wordBreak leetcode/139-wordBreak.cpp)
 add_executable(1167-minimumCostToConnectSticks leetcode/1167-minimumCostToConnectSticks.cpp)
+add_executable(682-baseballGame leetcode/682-baseballGame.cpp)
