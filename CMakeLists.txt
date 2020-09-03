@@ -226,3 +226,4 @@ add_executable(1167-minimumCostToConnectSticks leetcode/1167-minimumCostToConnec
 add_executable(682-baseballGame leetcode/682-baseballGame.cpp)
 add_executable(1099-twoSumLessThanK leetcode/1099-twoSumLessThanK.cpp)
 add_executable(210-CourseScheduleII leetcode/210-CourseScheduleII.cpp)
+add_executable(542-01Matrix leetcode/542-01Matrix.cpp)
