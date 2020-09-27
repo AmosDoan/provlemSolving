@@ -233,3 +233,5 @@ add_executable(1335-minimumDifficultyOfAJobSchedule leetcode/1335-minimumDifficu
 add_executable(557-reverseWordsInAStringIII leetcode/557-reverseWordsInAStringIII.cpp)
 add_executable(394-decodeString leetcode/394-decodeString.cpp)
 add_executable(1137-N-thTribonacciNumber leetcode/1137-N-thTribonacciNumber.cpp)
+add_executable(993-CousinsInBinaryTree leetcode/993-CousinsInBinaryTree.cpp)
+add_executable(559-MaximumDepthOfNAryTree leetcode/559-MaximumDepthOfNAryTree.cpp)
