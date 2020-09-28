@@ -1,7 +1,19 @@
 #include <iostream>
 #include <vector>
+#include <map>
+#include <queue>
 
 using namespace std;
+
+struct TreeNode {
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int val) : val(val) {}
+    TreeNode(int val, TreeNode *left, TreeNode *right) : val(val), left(left), right(right) {}
+};
 
 class Solution {
 public:
