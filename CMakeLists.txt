@@ -239,3 +239,4 @@ add_executable(783-minimumDistanceBetweenBSTNodes leetcode/783-minimumDistanceBe
 add_executable(690-employeeImportance leetcode/690-employeeImportance.cpp)
 add_executable(897-increasingOrderSearchTree leetcode/897-increasingOrderSearchTree.cpp)
 add_executable(107-BinaryTreeLevelOrderTraversalII leetcode/107-BinaryTreeLevelOrderTraversalII.cpp)
+add_executable(257-BinaryTreePaths leetcode/257-BinaryTreePaths.cpp)
