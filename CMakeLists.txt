@@ -241,3 +241,4 @@ add_executable(897-increasingOrderSearchTree leetcode/897-increasingOrderSearchT
 add_executable(107-BinaryTreeLevelOrderTraversalII leetcode/107-BinaryTreeLevelOrderTraversalII.cpp)
 add_executable(257-BinaryTreePaths leetcode/257-BinaryTreePaths.cpp)
 add_executable(687-LongestUniversalPath leetcode/687-LongestUniversalPath.cpp)
+add_executable(112-PathSum leetcode/112-PathSum.cpp)
