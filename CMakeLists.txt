@@ -247,3 +247,4 @@ add_executable(894-allPossibleFullBinaryTrees leetcode/894-allPossibleFullBinary
 add_executable(110-balancedBinaryTree leetcode/110-balancedBinaryTree.cpp)
 add_executable(429-N-aryTreeLevelOrderTraversal leetcode/429-N-aryTreeLevelOrderTraversal.cpp)
 add_executable(872-leaf-similarTrees leetcode/872-leaf-similarTrees.cpp)
+add_executable(1161-maximumLevelSumOfABinaryTree leetcode/1161-maximumLevelSumOfABinaryTree.cpp)
