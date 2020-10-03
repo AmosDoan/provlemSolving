@@ -249,3 +249,4 @@ add_executable(429-N-aryTreeLevelOrderTraversal leetcode/429-N-aryTreeLevelOrder
 add_executable(872-leaf-similarTrees leetcode/872-leaf-similarTrees.cpp)
 add_executable(1161-maximumLevelSumOfABinaryTree leetcode/1161-maximumLevelSumOfABinaryTree.cpp)
 add_executable(100-sameTree leetcode/100-sameTree.cpp)
+add_executable(1306-JumpGamesIII leetcode/1306-JumpGamesIII.cpp)
