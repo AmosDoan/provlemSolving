@@ -254,3 +254,4 @@ add_executable(513-FindBottomLeftTreeValue  "leetcode/513-FindBottomLeftTreeValu
 add_executable(108-ConvertSortedArraytoBinarySearchTree leetcode/108-ConvertSortedArraytoBinarySearchTree.cpp)
 add_executable(515-FindLargestValueinEachTreeRow leetcode/515-FindLargestValueinEachTreeRow.cpp)
 add_executable(785-IsGraphBipartite leetcode/785-IsGraphBipartite.cpp)
+add_executable(695-maxAreaOfIsland leetcode/695-maxAreaOfIsland.cpp)
