@@ -256,3 +256,4 @@ add_executable(515-FindLargestValueinEachTreeRow leetcode/515-FindLargestValuein
 add_executable(785-IsGraphBipartite leetcode/785-IsGraphBipartite.cpp)
 add_executable(695-maxAreaOfIsland leetcode/695-maxAreaOfIsland.cpp)
 add_executable(863-AllNodesDistanceKInBinaryTree leetcode/863-AllNodesDistanceKInBinaryTree.cpp)
+add_executable(199-BinaryTreeRightSideView leetcode/199-BinaryTreeRightSideView.cpp)
